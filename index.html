@@ -1,6 +1,41 @@
-<DOCTYPE html>
-<html>
-	<body>
-		<image src="./image.gif">
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Only</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black; /* Optional background color */
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="./image.gif" alt="Don't middle-click this image!" id="mainImage">
+    <script>
+        const image = document.getElementById("mainImage");
+
+        image.addEventListener("auxclick", (event) => {
+            if (event.button === 1) { // Middle click is button 1
+                window.location.href = "https://www.youtube.com/yourchannel";
+            }
+        });
+
+        // Optional: Prevent right-click context menu
+        image.addEventListener("contextmenu", (event) => {
+            event.preventDefault();
+            alert("Right-click is disabled!");
+        });
+    </script>
+</body>
 </html>
